@@ -1,0 +1,37 @@
+{
+    "rickshaw-tool": {
+        "schema": {
+            "version": "2020.03.18"
+        }
+    },
+    "tool": "ftrace",
+    "controller": {
+        "post-script": "%tool-dir%/ftrace-post-process"
+    },
+    "collector": {
+        "files-from-controller": [
+            {
+                "src": "%tool-dir%/ftrace-start",
+                "dest": "/usr/bin/"
+            },
+            {
+                "src": "%tool-dir%/ftrace-stop",
+                "dest": "/usr/bin/"
+            }
+        ],
+        "blacklist": [
+            {
+                "endpoint": "k8s",
+                "collector-types": [ "client", "server" ]
+            }
+        ],
+        "whitelist": [
+            {
+                "endpoint": "k8s",
+                "collector-types": [ "master", "worker" ]
+            }
+        ],
+        "start": "ftrace-start",
+        "stop": "ftrace-stop"
+      }
+}

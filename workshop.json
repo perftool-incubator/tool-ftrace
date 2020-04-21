@@ -1,0 +1,33 @@
+{
+    "workshop": {
+        "schema": {
+            "version": "2020.03.02"
+        }
+    },
+    "userenvs": [
+        {
+            "name": "default",
+            "requirements": [
+            "tracecmd_src"
+            ]
+        }
+    ],
+    "requirements": [
+        {
+            "name": "tracecmd_src",
+            "type": "source",
+            "source_info": {
+                "url": "https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/trace-cmd-v2.8.3.tar.gz",
+                "filename": "trace-cmd-v2.8.3.tar.gz",
+                "commands": { 
+                    "unpack": "tar -xzf trace-cmd-v2.8.3.tar.gz",
+                    "get_dir": "tar -tzf trace-cmd-v2.8.3.tar.gz | head -n 1",
+                    "commands": [
+                        "make",
+                        "make install"
+                    ]
+                }
+            }
+        }
+    ]
+}

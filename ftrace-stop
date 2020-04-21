@@ -1,0 +1,21 @@
+#!/bin/bash
+exec >ftrace-stop-stderrout.txt
+exec 2>&1
+
+echo "args: $@"
+echo "hostname: `hostname`"
+
+if [ -e ftrace-pid.txt ]; then
+    pid=`cat ftrace-pid.txt`
+    if [ -z "$pid" ]; then
+        echo "PID for procstat not found"
+        exit 1
+    fi
+    kill -s SIGINT $pid
+else
+    echo "ftrace-pid.txt not found"
+    echo "PWD: `/bin/pwd`"
+    echo "LS:"
+    /bin/ls -l
+    exit 1
+fi
