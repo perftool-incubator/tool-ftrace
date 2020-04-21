@@ -1,0 +1,41 @@
+#!/bin/bash
+exec >ftrace-start-stderrout.txt
+exec 2>&1
+
+echo "args: $@"
+echo "pwd: `/bin/pwd`"
+echo "hostname: `hostname`"
+
+longopts="record-opts:"
+opts=$(getopt -q -o "" --longoptions "$longopts" -n "getopt.sh" -- "$@");
+if [ $? -ne 0 ]; then
+    printf -- "\tUnrecognized option specified\n\n"
+    exit 1
+fi
+eval set -- "$opts";
+while true; do
+    case "$1" in
+        --record-opts)
+            shift;
+            files=$1
+            echo "record-opts=$record_opts"
+            shift;
+            ;;
+        --)
+            shift;
+            break
+            ;;
+        *)
+            echo "Invalid option: $1"
+            exit 1
+    esac
+done
+
+if [ -z "$record_opts" ]; then
+    record_opts="-e all"
+    echo "No --record-opts used, so using default options: $record_opts"
+fi
+
+/bin/rm -f ftrace-pid.txt
+trace-cmd record $record_opts &
+echo $! >ftrace-pid.txt
