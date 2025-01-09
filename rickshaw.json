@@ -27,7 +27,7 @@
         ],
         "whitelist": [
             {
-                "endpoint": "remotehost",
+                "endpoint": "remotehosts",
                 "collector-types": [ "profiler" ]
             },
             {
