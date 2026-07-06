@@ -5,9 +5,6 @@
         }
     },
     "tool": "ftrace",
-    "controller": {
-        "post-script": "%tool-dir%/ftrace-post-process"
-    },
     "collector": {
         "files-from-controller": [
             {
