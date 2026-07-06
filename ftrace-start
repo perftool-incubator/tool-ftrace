@@ -17,7 +17,7 @@ while true; do
     case "$1" in
         --record-opts)
             shift;
-            files=$1
+            record_opts=$1
             echo "record-opts=$record_opts"
             shift;
             ;;
