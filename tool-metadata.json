@@ -1,0 +1,16 @@
+{
+  "rickshaw-tool-metadata": {
+    "schema": {
+      "version": "2026.08.11"
+    }
+  },
+  "tool": "ftrace",
+  "description": "Kernel event tracing via trace-cmd record, collecting binary ftrace trace.dat logs for deep kernel and scheduler event diagnostics.",
+  "cdm_indexed": false,
+  "output_files": [
+    "trace.dat",
+    "ftrace-pid.txt",
+    "ftrace-start-stderrout.txt",
+    "ftrace-stop-stderrout.txt"
+  ]
+}

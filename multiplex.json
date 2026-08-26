@@ -1,0 +1,14 @@
+{
+    "presets": {
+        "defaults" : [
+            { "arg": "record-opts", "vals": ["-e all"] }
+        ]
+    },
+    "validations": {
+        "record_options" : {
+            "description" : "options passed directly to trace-cmd record (e.g. -e all, -e sched)",
+            "args" : [ "record-opts" ],
+            "vals": ".+"
+        }
+    }
+}
